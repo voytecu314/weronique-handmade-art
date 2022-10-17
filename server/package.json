@@ -1,0 +1,30 @@
+{
+  "name": "weonique-handmade-art-server",
+  "version": "1.0.0",
+  "description": "Node server for weronique handmade art website",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voytecu314/weronique-handmade-art.git"
+  },
+  "keywords": [
+    "handmade",
+    "art",
+    "weronique"
+  ],
+  "author": "Wojciech Urbanski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/voytecu314/weronique-handmade-art/issues"
+  },
+  "homepage": "https://github.com/voytecu314/weronique-handmade-art#readme",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "mongoose": "^6.6.5"
+  }
+}

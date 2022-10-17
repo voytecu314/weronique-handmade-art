@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weronique Admin</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #preventSubmit {
+            display: grid;
+            place-items: center;
+            width: 100vw;
+            height: 100vh;
+            background-color: aliceblue;
+        }
+
+        #update-modal{
+            display: none;
+            place-items: center;
+            position: absolute;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: aquamarine;
+        }
+
+        #display-image{
+            width: 300px;
+            height: 200px;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="preventSubmit">
+        <input type="password" value="Zakole57/6" id="password" autofocus><button onclick="sendPass(this)">SEND</button>
+    </div>
+
+    <div id="update-modal"></div>
+    
+</body>
+<script>
+
+let uploaded_image;
+
+async function sendPass(button) {
+    const updateModal = document.getElementById('update-modal');
+    
+    const fetchOpt = {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({password: button.previousSibling.value})
+    };
+
+    try {
+
+        const response = await fetch('http://localhost:5000/admin/upload',fetchOpt);
+        const data = await response.text();
+
+        if(data!=='false'){
+            updateModal.innerHTML=data;
+            updateModal.style.display='grid';
+
+            const image_input = document.querySelector("#image-input");
+
+            image_input.addEventListener("change", function() {
+            const reader = new FileReader();
+            reader.addEventListener("load", () => {
+            uploaded_image = reader.result;
+            document.querySelector("#display-image").style.backgroundImage = `url(${uploaded_image})`;
+            });
+            reader.readAsDataURL(this.files[0]);
+            });
+            
+        } else {
+            updateModal.innerHTML='<div>WRONG PASSWORD</div>';
+            updateModal.style.display='grid';
+        }
+
+    } catch (error) {
+        console.log('from html fetch admin upload',error);
+    }
+
+    }
+        
+    function upload() {
+        const category = document.getElementById('category-input').value;
+        const name = document.getElementById('name-input').value;
+        const title = document.getElementById('title-input').value;
+        const description = document.getElementById('description-input').value;
+        const technic = document.getElementById('technic-input').value;
+        const price = document.getElementById('price-input').valueAsNumber;
+        const discount = document.getElementById('discount-input').valueAsNumber;
+        const keywords = [];
+        const checkboxes = document.getElementById('checkboxes').children;
+
+        for(let x=0; x<document.getElementById('checkboxes').children.length;x++){
+            if(checkboxes[x].tagName==='INPUT' && checkboxes[x].checked)
+            keywords.push(checkboxes[x].value);
+        }
+
+        const uploadData = {picture: uploaded_image, category, name, title, description, keywords, technic, price, discount};
+
+        const fetchOptions = {
+            method:'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(uploadData)
+        }
+
+        fetch('http://localhost:5000/resources/upload',fetchOptions)
+            .then(res=>res.json())
+            .then(ans=>document.body.innerHTML=`<h1>${ans}</h1>`)
+            .catch(err=>document.body.innerHTML=`<h1>${err.message}</h1>`);
+
+    }
+
+
+</script>
+</html>
