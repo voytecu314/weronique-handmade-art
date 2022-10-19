@@ -24,6 +24,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
 </head>
 <body data-spy="scroll" data-target="#navbarNav" data-offset="50" onload="fetchPics()">
 
+<!-- SEARCH MODAL -->
     <div 
         id="search-modal" 
         style= "display: flex;
@@ -70,6 +71,34 @@ https://www.tooplate.com/view/2119-gymso-fitness
         </div>
         <i class="fa fa fa-angle-double-right" style="font-size:4rem; color: lightgrey; cursor: pointer;"></i> 
     
+    </div>
+    <!-- PICTURE ZOOM  MODAL -->
+    <div 
+        id="zoom-modal" 
+        style= "display: flex;
+                justify-content: space-around;
+                align-items: center;
+                position:fixed;  
+                top:0; 
+                left: -100%; 
+                z-index: 1031; 
+                width: 0; 
+                height: 0;
+                opacity: .6;
+                background-color:aliceblue; 
+                transition: all 1s;"
+                onclick="closeZoomModal(this)"
+    >
+        <i class="fa fa-angle-double-left" style="font-size:4rem; color: grey; cursor: pointer;"></i>
+        <div 
+            id="zoom-display" 
+            style=" width: 70%;  
+                    height: 75%;
+                    border: 1px solid black"
+        > 
+            Loading image..
+        </div>
+        <i class="fa fa fa-angle-double-right" style="font-size:4rem; color: grey; cursor: pointer;"></i> 
     </div>
 
     <!-- MENU BAR -->

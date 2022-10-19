@@ -53,7 +53,7 @@
 </body>
 <script>
 
-let uploaded_image;
+let images=[];
 
 async function sendPass(button) {
     const updateModal = document.getElementById('update-modal');
@@ -73,15 +73,27 @@ async function sendPass(button) {
             updateModal.innerHTML=data;
             updateModal.style.display='grid';
 
-            const image_input = document.querySelector("#image-input");
+            const images_input = document.querySelector("#images-input");
 
-            image_input.addEventListener("change", function() {
-            const reader = new FileReader();
-            reader.addEventListener("load", () => {
-            uploaded_image = reader.result;
-            document.querySelector("#display-image").style.backgroundImage = `url(${uploaded_image})`;
-            });
-            reader.readAsDataURL(this.files[0]);
+            images_input.addEventListener("change", function(e) {
+                if (window.File && window.FileReader && window.FileList && window.Blob) {
+                    images = [];
+                    const files = e.target.files;
+                    const output = document.querySelector("#result");
+                    output.innerHTML = "";
+                    for (let i = 0; i < files.length; i++) {
+                        if (!files[i].type.match("image")) continue;
+                    
+                    const picReader = new FileReader(); 
+                    picReader.addEventListener("load", function (event) {
+                              const picFile = event.target; images.push(picFile.result);
+                              const div = document.createElement("div");
+                              div.innerHTML = `<img style="height:100px; ${i===0?"border: 2px dashed black":""}" src="${picFile.result}" title="${picFile.name}"/>`;
+                              output.appendChild(div);});
+                    picReader.readAsDataURL(files[i]);
+                    } 
+                }
+                else alert("You can not upload from this browser, try another browser");
             });
             
         } else {
@@ -90,7 +102,7 @@ async function sendPass(button) {
         }
 
     } catch (error) {
-        console.log('from html fetch admin upload',error);
+        console.log('from html fetch of admin upload',error);
     }
 
     }
@@ -111,7 +123,7 @@ async function sendPass(button) {
             keywords.push(checkboxes[x].value);
         }
 
-        const uploadData = {picture: uploaded_image, category, name, title, description, keywords, technic, price, discount};
+        const uploadData = {picture: images[0], category, name, title, description, keywords, technic, price, discount};
 
         const fetchOptions = {
             method:'POST',

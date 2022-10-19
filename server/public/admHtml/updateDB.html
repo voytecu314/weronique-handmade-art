@@ -1,8 +1,11 @@
 <h1>Hi Nisia!</h1>
-<input type="file" id="image-input" accept="image/jpeg, image/png, image/jpg"/>
-<div id="display-image"></div>
+<input type="file" id="images-input" multiple="multiple" accept="image/jpeg, image/png, image/jpg"/>
+<label for="result" >First picture is DEFAULT THUMBNAIL</label>
+<output id="result" style="display:flex; gap: 3px"></output>
+<!-- <div id="display-image"></div> -->
 <select id="category-input" type="text" placeholder="CATEGORY">
-    <option value="TEDDIES" selected disabled hidden>TEDDIES</option>    
+    <option value="Category" selected disabled hidden>Category</option> 
+    <option value="TEDDIES">TEDDIES</option>    
     <option value="DOLLS">DOLLS</option>
     <option value="ART">ART</option>
 </select>
@@ -45,5 +48,5 @@
     <label for="keyword16"> cheap</label>
 </div>
 <input id="price-input" type="number" step="0.01" placeholder="PRICE in EURO"/>
-<input id="discount-input" type="number" step="0.1" value="5"/>
+<input id="discount-input" type="number" step="0.1" min="1" max="100" placeholder="discount %"/>
 <button onclick="upload()">UPLOAD</button>
