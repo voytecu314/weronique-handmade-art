@@ -5,6 +5,7 @@ const modifyResourcesRoutes = require('./routes/modifyResourcesRoutes.js');
 const getOnLoadArtWorks = require('./routes/onLoadArtWorks.js');
 const searchProductsRoutes = require('./routes/searchProducts.js');
 const contactRoute = require('./routes/contactRoute.js');
+const fetchPreviewPicturesRoute = require('./routes/fetchPreviewPicturesRoute.js');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -17,6 +18,7 @@ app.use('/resources',modifyResourcesRoutes);
 app.use('/get-items-onload',getOnLoadArtWorks);
 app.use('/search-products',searchProductsRoutes);
 app.use('/email-js',contactRoute);
+app.use('/get-preview-pictures',fetchPreviewPicturesRoute);
 
 connectMongo();
 

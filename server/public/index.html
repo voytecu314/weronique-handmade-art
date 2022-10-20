@@ -17,6 +17,9 @@
 
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/tooplate-gymso-style.css">
+
+     <!-- favicon -->
+     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 <!--
 Tooplate 2119 Gymso Fitness
 https://www.tooplate.com/view/2119-gymso-fitness
@@ -42,21 +45,18 @@ https://www.tooplate.com/view/2119-gymso-fitness
         <div
             id="close-modal"
             style=" position: absolute;
-                    top: 0; right: .5%;
+                    top: .5%; right: 1%;
                     width: 20px;
-                    font-size: large;
-                    font-weight: 700;
                     text-align: center;
-                    box-shadow: 1px 1px black;
                     cursor: pointer;"
             title="Close search-window"
             onclick="closeSearchModal()"
         >
-        X</div>
+            <i style="font-size: xx-large;" class="fa fa-window-close" aria-hidden="true"></i>
+        </div>
 
         <h5 id="search-title" style="position: absolute; top: 0;">Searching...</h5>
 
-        <i class="fa fa-angle-double-left" style="font-size:4rem; color: lightgrey; cursor: pointer;"></i>
         <div 
             id="search-display" 
             style=" display: flex;
@@ -69,36 +69,46 @@ https://www.tooplate.com/view/2119-gymso-fitness
         > 
             Loading search content..
         </div>
-        <i class="fa fa fa-angle-double-right" style="font-size:4rem; color: lightgrey; cursor: pointer;"></i> 
     
     </div>
     <!-- PICTURE ZOOM  MODAL -->
     <div 
         id="zoom-modal" 
-        style= "display: flex;
+        style= "display: none;
                 justify-content: space-around;
                 align-items: center;
                 position:fixed;  
-                top:0; 
-                left: -100%; 
+                top: 0; 
+                left: 0; 
                 z-index: 1031; 
-                width: 0; 
-                height: 0;
-                opacity: .6;
+                width: 100vw; 
+                height: 100vh;
                 background-color:aliceblue; 
                 transition: all 1s;"
-                onclick="closeZoomModal(this)"
     >
-        <i class="fa fa-angle-double-left" style="font-size:4rem; color: grey; cursor: pointer;"></i>
+        <div
+        id="close-zoom-modal"
+        style=" position: absolute;
+                top: .5%; right: 1%;
+                width: 20px;
+                text-align: center;
+                cursor: pointer;"
+        title="Close search-window"
+        onclick="closeZoomModal(this.parentElement)"
+        >
+            <i style="font-size: xx-large;" class="fa fa-window-close" aria-hidden="true"></i>
+        </div>
+
+        <i class="fa fa-angle-double-left change-picture" style="font-size:4rem; color: grey; cursor: pointer;"></i>
         <div 
             id="zoom-display" 
             style=" width: 70%;  
                     height: 75%;
-                    border: 1px solid black"
-        > 
-            Loading image..
-        </div>
-        <i class="fa fa fa-angle-double-right" style="font-size:4rem; color: grey; cursor: pointer;"></i> 
+                    background-size: contain;
+                    background-position: center;
+                    background-repeat: no-repeat;"
+        ></div>
+        <i id="show-next-picture" class="fa fa fa-angle-double-right change-picture" style="font-size:4rem; color: grey; cursor: pointer;"></i> 
     </div>
 
     <!-- MENU BAR -->

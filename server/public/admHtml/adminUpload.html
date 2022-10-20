@@ -123,7 +123,7 @@ async function sendPass(button) {
             keywords.push(checkboxes[x].value);
         }
 
-        const uploadData = {picture: images[0], category, name, title, description, keywords, technic, price, discount};
+        const uploadData = {pictures: images, category, name, title, description, keywords, technic, price, discount};
 
         const fetchOptions = {
             method:'POST',

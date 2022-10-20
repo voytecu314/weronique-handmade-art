@@ -5,6 +5,12 @@ Tooplate 2119 Gymso Fitness
 https://www.tooplate.com/view/2119-gymso-fitness
 
 */
+  @font-face {
+    font-family: 'Rochester';
+    src: url('../fonts/Rochester-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
 
   @font-face {
       font-family: 'Plain';
@@ -269,7 +275,8 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
   .navbar-brand {
     color: var(--white-color);
-    font-size: var(--h3-font-size);
+    font-family: 'Rochester';
+    font-size: var(--h2-font-size);
     font-weight: var(--font-weight-bold);
     line-height: normal;
     padding-top: 0;

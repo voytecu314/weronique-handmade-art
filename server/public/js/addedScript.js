@@ -34,14 +34,14 @@
                 .then(res=>res.json())
                 .then(data=>{ searchDisplay.innerHTML="";
                     data.forEach(
-                        ({name,picture, title})=>{searchDisplay.insertAdjacentHTML('beforeend',
+                        ({name,pictures, title})=>{searchDisplay.insertAdjacentHTML('beforeend',
                             `<div style="height: 300px; margin-top: .5%;" class="ml-lg-auto col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
                                 <div class="team-thumb">
                                     <h5 style="text-align:center">${name}</h5>
                                     
                                     <div style="width: 100%; 
                                          height: 200px; 
-                                         background-image: url('${picture}');
+                                         background-image: url('${pictures[0]}');
                                          background-size:contain;
                                          background-position:center;
                                          background-repeat:no-repeat;
@@ -97,34 +97,49 @@
                     description2.innerText = item2.description;
                     technics1.innerText = item1.technic;
                     technics2.innerText = item2.technic;
-                    img1.src = item1.picture;
-                    img2.src = item2.picture;
+                    img1.src = item1.pictures[0];
+                    img2.src = item2.pictures[0];
                     img1.alt = item1.name;
                     img2.alt = item2.name;
                 })
                 .catch(err=>{
-                    console.log('Pictures onload error: ',err.message.slice(-9))
+                    console.log('Pictures onload error: ',err.message)
                 });
         }
 
         function closeZoomModal(modal) {
-            modal.style.width='0';
-            modal.style.height='0';
-            modal.style.left="-100%";
+            modal.style.display='none';
         }
 
+        let currentImg;
+
         function zoomImg(element) {
-
+            currentImg = 0;
             const zoomModal = document.getElementById('zoom-modal');
-
-            zoomModal.style.width='100vw';
-            zoomModal.style.height='100vh';
-            zoomModal.style.left='0';
+            document.getElementById('zoom-display').style.backgroundImage='none';
+            zoomModal.style.display='flex';
 
             if(element.tagName==='DIV') {
-                console.log(element.style.backgroundImage.slice(5,-2),element.previousElementSibling.innerText);
+                fetchPreviewPictures(element.previousElementSibling.innerText);
                 
             } else {
-                console.log(element.src, element.alt);
+                fetchPreviewPictures(element.alt);
             }
+        }
+
+        function fetchPreviewPictures(name) {
+            let counter=0;
+            fetch(`/get-preview-pictures/${name}`)
+                .then(res=>res.json())
+                .then(pictures=>{
+                    document.getElementById('zoom-display').style.backgroundImage=`url('${pictures[0]}')`;
+                    document.querySelectorAll('.change-picture').forEach(i=>{
+                        i.addEventListener('click',(e)=>{
+                            if(e.target.id) counter++; else counter--;
+                            document.getElementById('zoom-display').style.backgroundImage=
+                            `url('${pictures[((counter%pictures.length)+pictures.length)%pictures.length]}')`;
+                        });
+                    })
+                })
+                .catch(err=>console.log('fetch preview error: ',err.message));
         }
