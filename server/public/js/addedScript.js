@@ -1,25 +1,3 @@
-        const contactForm = document.getElementById('contact-form');
-
-        contactForm.addEventListener('submit', function (event){ 
-            event.preventDefault();
-
-            fetch('http://localhost:5000/email-js')
-                        .then(res=>res.json())
-                        .then(({pKey, serviceID, templateID})=>{ 
-                             emailjs.sendForm(serviceID,templateID, contactForm, pKey)
-                                .then(function(response) {
-                                console.log('Contact status',response.status);
-                                }, function(error) {
-                                console.log('Sending Contact-Form FAILED...', error);
-                                });
-                            contactForm.reset();
-                         })
-                        .catch(err=>console.log('Fetch email credentials failed', err.message));
-
-           
-        });
-    
-        
         function searchModal(keyword) {
             const searchDisplay = document.getElementById('search-display');
             document.getElementById('search-modal').style.width='100vw';
@@ -52,7 +30,7 @@
 
                                     <ul style="background-image:linear-gradient(90deg,aliceblue,white,aliceblue); text-align: center" class="social-icon mt-3">
                                         <li><span>${title}</span></li>
-                                        <li style="cursor:pointer"><a href="#" class="fa fa-paypal" title="Buy now"  data-toggle="modal" data-target="#membershipForm"></a></li>
+                                        <li style="cursor:pointer"><a href="#" class="fa fa-paypal" title="Buy now"  data-toggle="modal" data-target="#PayPalForm"></a></li>
                                         <li style="cursor:pointer"><a href="#" class="fa fa-shopping-basket" title="Add to basket"></a></li>
                                     </ul>
 
@@ -83,38 +61,16 @@
         const technics1 = document.getElementById('item1-technics');
         const technics2 = document.getElementById('item2-technics');
 
-        function fetchPics() {
-            fetch('http://localhost:5000/get-items-onload')
-                .then(res=>res.json())
-                .then(([item1,item2])=>{
-                    header1.innerText =`${item1.discount}% off - ${item1.category} - ${item1.name}`;
-                    header2.innerText =`${item2.discount}% off - ${item2.category} - ${item2.name}`;
-                    name1.innerText = item1.name;
-                    name2.innerText = item2.name;
-                    title1.innerText = item1.title;
-                    title2.innerText = item2.title;
-                    description1.innerText = item1.description;
-                    description2.innerText = item2.description;
-                    technics1.innerText = item1.technic;
-                    technics2.innerText = item2.technic;
-                    img1.src = item1.pictures[0];
-                    img2.src = item2.pictures[0];
-                    img1.alt = item1.name;
-                    img2.alt = item2.name;
-                })
-                .catch(err=>{
-                    console.log('Pictures onload error: ',err.message)
-                });
-        }
+        
 
         function closeZoomModal(modal) {
             modal.style.display='none';
         }
 
-        let currentImg;
+        //let currentImg; //? meant to be counter
 
         function zoomImg(element) {
-            currentImg = 0;
+            //currentImg = 0; //?  meant to be counter
             const zoomModal = document.getElementById('zoom-modal');
             document.getElementById('zoom-display').style.backgroundImage='none';
             zoomModal.style.display='flex';

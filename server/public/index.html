@@ -25,7 +25,7 @@ Tooplate 2119 Gymso Fitness
 https://www.tooplate.com/view/2119-gymso-fitness
 -->
 </head>
-<body data-spy="scroll" data-target="#navbarNav" data-offset="50" onload="fetchPics()">
+<body data-spy="scroll" data-target="#navbarNav" data-offset="50" onload="onloadScript()">
 
 <!-- SEARCH MODAL -->
     <div 
@@ -143,16 +143,22 @@ https://www.tooplate.com/view/2119-gymso-fitness
                     <li class="nav-item">
                         <a href="#contact" class="nav-link smoothScroll">Contact</a>
                     </li>
+
+                    <li class="nav-item">
+                        <select style="font-size: .8rem; text-align: center;">
+                            <option value="change-language" selected hidden disabled>Change Language</option>
+                            <option value="GB">🇬🇧 English</option>
+                            <option value="DE">🇩🇪 German</option>
+                            <option value="PL">🇵🇱 Polish</option>
+                        </select>
+                    </li>
+
                 </ul>
 
-                <ul class="social-icon ml-lg-3">
-                    <li><a href="https://fb.com/tooplate" class="fa fa-facebook"></a></li>
-                    <li><a href="#" class="fa fa-twitch"></a></li>
-                    <li><a href="#" class="fa fa-instagram"></a></li>
-                </ul>
             </div>
-
         </div>
+        
+
     </nav>
 
 
@@ -166,7 +172,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
                          <div class="col-lg-8 col-md-10 mx-auto col-12">
                               <div class="hero-text mt-5 text-center">
-
+                                    
                                     <h6 data-aos="fade-up" data-aos-delay="300">almost all creativity requires purposeful play</h6>
 
                                     <h1 class="text-white" data-aos="fade-up" data-aos-delay="500">Feel the magic of handmade beauty</h1>
@@ -188,30 +194,31 @@ https://www.tooplate.com/view/2119-gymso-fitness
             <div class="row">
 
                 <div class="d-flex flex-column justify-content-center ml-lg-auto mr-lg-5 col-lg-5 col-md-6 col-12">
-                    <h2 class="mb-3 text-white" data-aos="fade-up">New to Weronique ART?</h2>
+                    <h2 id="greet" class="mb-3 text-white" data-aos="fade-up">New to Weronique ART?</h2>
 
-                    <h6 class="mb-4 text-white" data-aos="fade-up">SignUp to our NewsLetter and get 5% discount for every product</h6>
+                    <h6 id="info" class="mb-4 text-white" data-aos="fade-up">SignUp to our NewsLetter and get a discount for every product</h6>
 
                     <p data-aos="fade-up" data-aos-delay="200">Every product is handmade by <a rel="nofollow" href="https://www.facebook.com" target="_parent">Weronique</a> from passion and love</p>
 
-                    <a href="#" class="btn custom-btn bg-color mt-3" data-aos="fade-up" data-aos-delay="300" data-toggle="modal" data-target="#membershipForm">Become a member today</a>
+                    <a id="login-button" href="#" class="btn custom-btn bg-color mt-3" data-aos="fade-up" data-aos-delay="300" data-toggle="modal" data-target="#membershipForm">LOGIN or Become a member today</a>
+                    
                 </div>
 
                 <div class="mr-lg-auto mt-3 col-lg-4 col-md-6 col-12">
                      <div class="about-working-hours">
                           <div>
 
-                                <h2 class="mb-4 text-white" data-aos="fade-up" data-aos-delay="500">Membership benefits</h2>
+                                <h2 id="special-4-u" class="mb-4 text-white" data-aos="fade-up" data-aos-delay="500">Membership benefits</h2>
 
-                               <strong class="d-block" data-aos="fade-up" data-aos-delay="600">Discount : 5% off every product</strong>
+                               <strong class="d-block" data-aos="fade-up" data-aos-delay="600">Discount on every product</strong>
 
-                               <strong class="mt-3 d-block" data-aos="fade-up" data-aos-delay="700">News about handmade:</strong>
+                               <strong id="newest" class="mt-3 d-block" data-aos="fade-up" data-aos-delay="700">News about handmade:</strong>
 
-                                <p data-aos="fade-up" data-aos-delay="800">Get up to date with new articles and handmade events</p>
+                                <p id="newest-description" data-aos="fade-up" data-aos-delay="800">Get up to date with new articles and handmade events</p>
 
-                                <strong class="mt-3 d-block" data-aos="fade-up" data-aos-delay="700">Get special offers</strong>
+                                <strong id="upcoming" class="mt-3 d-block" data-aos="fade-up" data-aos-delay="700">Get special offers</strong>
 
-                                <p data-aos="fade-up" data-aos-delay="800">Discounts, events, give awayas</p>
+                                <p id="event-link" data-aos="fade-up" data-aos-delay="800">Discounts, events, give awayas</p>
                                </div>
                           </div>
                      </div>
@@ -246,7 +253,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
                                         <span id="item1-title"></span>
 
                                         <ul class="social-icon mt-3">
-                                            <li><a href="#" class="fa fa-paypal" title="Buy now" data-toggle="modal" data-target="#membershipForm"></a></li>
+                                            <li><a href="#" class="fa fa-paypal" title="Buy now" data-toggle="modal" data-target="#PayPalForm"></a></li>
                                             <li><a href="#" class="fa fa-shopping-basket" title="Add to basket"></a></li>
                                         </ul>
                                     </div>
@@ -270,7 +277,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
                                         <span id="item2-title"></span>
 
                                         <ul class="social-icon mt-3">
-                                            <li><a href="#" class="fa fa-paypal" title="Buy now"  data-toggle="modal" data-target="#membershipForm"></a></li>
+                                            <li><a href="#" class="fa fa-paypal" title="Buy now"  data-toggle="modal" data-target="#PayPalForm"></a></li>
                                             <li><a href="#" class="fa fa-shopping-basket" title="Add to basket"></a></li>
                                         </ul>
                                     </div>
@@ -443,64 +450,88 @@ https://www.tooplate.com/view/2119-gymso-fitness
           <div class="container">
                <div class="row">
 
-                    <div class="ml-auto col-lg-4 col-md-5">
-                        <p class="copyright-text">Copyright &copy; 2022 Weronique & Wojtek U
-                        
-                        <br>Design: <a>Tooplate</a></p>
-                    </div>
+                   
 
                     <div class="d-flex justify-content-center mx-auto col-lg-5 col-md-7 col-12">
                         <p class="mr-4">
                             <i class="fa fa-envelope-o mr-1"></i>
-                            <a href="#">weronique@company.co</a>
+                            <a href="#">weronique.handmade.art@gmail.com</a>
                         </p>
 
-                        <p><i class="fa fa-phone mr-1"></i> 010-020-0840</p>
-                    </div>
-                    
+                        <p><i class="fa fa-phone mr-1"></i> +48 10-020-0840</p>
+                    </div> 
                </div>
+                    <div class="d-flex justify-content-center mx-auto col-lg-5 col-md-7 col-12">
+                        <p class="mr-4"><a href="https://fb.com/tooplate" class="fa fa-facebook"></a></p>
+                        <p class="mr-4"><a href="#" class="fa fa-twitch"></a></p>
+                        <p class="mr-4"><a href="#" class="fa fa-instagram"></a></p>
+                    </div>
+                    <div class="mx-auto col-lg-4 col-md-5">
+                        <p class="copyright-text">Copyright &copy; 2022 Weronique & Wojtek U
+                        
+                        <br>Design: <a>Tooplate</a></p>
+                    </div>
           </div>
      </footer>
 
-    <!-- Modal -->
+    <!-- Login Modal -->
     <div class="modal fade" id="membershipForm" tabindex="-1" role="dialog" aria-labelledby="membershipFormLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
 
         <div class="modal-content">
           <div class="modal-header">
 
-            <h2 class="modal-title" id="membershipFormLabel">Membership Form</h2>
+            <h2 id="login-title" class="modal-title" id="membershipFormLabel">Login</h2>
 
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button id="close-login-modal" type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
 
           <div class="modal-body">
-            <form class="membership-form webform" role="form">
-                <input type="text" class="form-control" name="cf-name" placeholder="John Doe">
+            <form id="login-form" class="membership-form webform" role="form">
 
-                <input type="email" class="form-control" name="cf-email" placeholder="Johndoe@gmail.com">
+                <input type="email" class="form-control" name="email" placeholder="Insert your email" required>
 
-                <input type="tel" class="form-control" name="cf-phone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-
-                <textarea class="form-control" rows="3" name="cf-message" placeholder="Additional Message"></textarea>
+                <input type="password" class="form-control" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
 
                 <button type="submit" class="form-control" id="submit-button" name="submit">Submit Button</button>
 
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="signup-agree">
-                    <label class="custom-control-label text-small text-muted" for="signup-agree">I agree to the <a href="#">Terms &amp;Conditions</a>
-                    </label>
-                </div>
             </form>
           </div>
 
-          <div class="modal-footer"></div>
+          <div class="modal-footer">
+            <p style="cursor: pointer;" onclick="showSignUpForm(this)">No account? - <a href="#">Sign Up</a></p>
+          </div>
 
         </div>
       </div>
     </div>
+
+    <!-- PayPal MODAL -->
+
+    <div class="modal fade" id="PayPalForm" tabindex="-1" role="dialog" aria-labelledby="PaypalFormLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+  
+          <div class="modal-content">
+            <div class="modal-header">
+  
+              <h2 class="modal-title" id="PaypalFormLabel">PayPal</h2>
+  
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+  
+            <div class="modal-body">
+              
+            </div>
+  
+            <div class="modal-footer"></div>
+  
+          </div>
+        </div>
+      </div>
 
      <!-- SCRIPTS -->
      <script src="js/jquery.min.js"></script>
@@ -511,7 +542,12 @@ https://www.tooplate.com/view/2119-gymso-fitness
      <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
     </script>
-     <script src="js/addedScript.js" async></script>
+    <script src="js/added-scripts/contactForm.js"></script>
+    <script src="js/added-scripts/checkJWT.js" async></script>
+    <script src="js/added-scripts/onload.js"></script>
+    <script src="js/added-scripts/fetchEvent.js"></script>
+    <script src="js/added-scripts/loginSignUp.js" async></script>
+    <script src="js/addedScript.js" async></script>
 
 </body>
 </html>

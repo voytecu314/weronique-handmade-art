@@ -10,7 +10,9 @@ const artWorkSchema = new mongoose.Schema({
     technic: String,
     price: Number,
     discount: Number
-});
+}, {
+    timestamps: true
+  });
 
 const artWorkModel = new mongoose.model('art-work',artWorkSchema);
 

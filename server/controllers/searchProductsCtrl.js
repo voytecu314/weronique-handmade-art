@@ -7,6 +7,10 @@ const searchProductsCtrl = async (req, res) => {
 
         if(keyword==='TEDDIES' || keyword==='DOLLS' || keyword==='ART'){
             searchResult = await artWorkModel.find({category:keyword});
+        } else if(keyword==='newest') {
+            searchResult = await artWorkModel.find({});
+            searchResult.reverse();
+            searchResult=searchResult.slice(0,4);
         } else {
             searchResult = await artWorkModel.find({keywords:keyword});
         }
