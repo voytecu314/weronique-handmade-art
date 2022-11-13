@@ -1,13 +1,5 @@
 const confirmPassInput = `<input id="confirm-password" value="Testtesttesttest1" type="password" class="form-control" name="confirm_password" placeholder="Confirm password" required>`;
 const userNameInput = '<input id="user-name" type="text" class="form-control" name="user_name" placeholder="User Name" required>';
-const loginInfoModal =  (msg) => {
-    return `<div style="position: fixed; top: 30%; left: 30%; width: 40vw; height: 40vh; z-index: 2000; background: aliceblue;" onclick="(()=>{this.style.display='none'})(this)">
-                <i style="font-size: xx-large; float: right; margin: 2% 2%; cursor: pointer" class="fa fa-window-close" aria-hidden="true"></i>
-                <div style="margin: 10% 0; text-align: center; color: black">
-                    <h2>${msg}</h2>
-                </div>
-            <div>`
-}
 
 let signUp = false;
 let userName = null;
@@ -64,7 +56,7 @@ function showSignUpForm(paraBtn) {
 function fetchLoginData(prefix, fetchOpt) {
     fetch(`http://localhost:5000/user-login/${prefix}`, fetchOpt)
                 .then(res=>res.json())
-                .then(answer=>{document.body.innerHTML+=loginInfoModal(answer.msg);
+                .then(answer=>{document.body.innerHTML+=infoModal(answer.msg);
 
                                 answer.data && answer.activation_email && 
                                 emailjs.send(answer.activation_email.serviceID,

@@ -12,14 +12,14 @@
                 .then(res=>res.json())
                 .then(data=>{ searchDisplay.innerHTML="";
                     data.forEach(
-                        ({name,pictures, title})=>{searchDisplay.insertAdjacentHTML('beforeend',
+                        (item)=>{searchDisplay.insertAdjacentHTML('beforeend',
                             `<div style="height: 300px; margin-top: .5%;" class="ml-lg-auto col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
                                 <div class="team-thumb">
-                                    <h5 style="text-align:center">${name}</h5>
+                                    <h5 style="text-align:center">${item.name}</h5>
                                     
                                     <div style="width: 100%; 
                                          height: 200px; 
-                                         background-image: url('${pictures[0]}');
+                                         background-image: url('${item.pictures[0]}');
                                          background-size:contain;
                                          background-position:center;
                                          background-repeat:no-repeat;
@@ -29,13 +29,14 @@
                                     </div>
 
                                     <ul style="background-image:linear-gradient(90deg,aliceblue,white,aliceblue); text-align: center" class="social-icon mt-3">
-                                        <li><span>${title}</span></li>
+                                        <li><span>${item.title}</span></li>
                                         <li style="cursor:pointer"><a href="#" class="fa fa-paypal" title="Buy now"  data-toggle="modal" data-target="#PayPalForm"></a></li>
-                                        <li style="cursor:pointer"><a href="#" class="fa fa-shopping-basket" title="Add to basket"></a></li>
+                                        <li style="cursor:pointer"><a href="#" class="fa fa-shopping-basket" title="Add to basket"
+                                                                     onclick="addToBasket({'id':'${item._id}'})"></a></li>
                                     </ul>
 
                                 </div>
-                            </div>`) }
+                            </div>`)}
                     )
                 })
                 .catch(err=>console.log('Search-fetch error: ',err))
@@ -47,21 +48,6 @@
             document.getElementById('search-modal').style.height='0';
             document.getElementById('search-modal').style.left='-100%';
         }
-
-        const header1 = document.getElementById('item1-header');
-        const header2 = document.getElementById('item2-header');
-        const img1 = document.getElementById('item1-picture');
-        const img2 = document.getElementById('item2-picture');
-        const name1 = document.getElementById('item1-name');
-        const name2 = document.getElementById('item2-name');
-        const title1 = document.getElementById('item1-title');
-        const title2 = document.getElementById('item2-title');
-        const description1 = document.getElementById('item1-description');
-        const description2 = document.getElementById('item2-description');
-        const technics1 = document.getElementById('item1-technics');
-        const technics2 = document.getElementById('item2-technics');
-
-        
 
         function closeZoomModal(modal) {
             modal.style.display='none';

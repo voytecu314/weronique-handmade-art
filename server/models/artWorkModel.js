@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
 
+const discountSchema = mongoose.Schema({
+  set: {type: Boolean, default: false},
+  percent: {type: Number, min: 1, max: 100}
+});
+
 const artWorkSchema = new mongoose.Schema({
     pictures: {required: true, type: Array},
     category: String,
@@ -9,7 +14,7 @@ const artWorkSchema = new mongoose.Schema({
     keywords: Array,
     technic: String,
     price: Number,
-    discount: Number
+    discount: Object
 }, {
     timestamps: true
   });

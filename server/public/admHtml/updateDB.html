@@ -1,15 +1,15 @@
 <h1>Hi Nisia!</h1>
-<input type="file" id="images-input" multiple="multiple" accept="image/jpeg, image/png, image/jpg"/>
+<input type="file" id="images-input" multiple="multiple" accept="image/jpeg, image/png, image/jpg" required/>
 <label for="result" >First picture is DEFAULT THUMBNAIL</label>
 <output id="result" style="display:flex; gap: 3px"></output>
-<!-- <div id="display-image"></div> -->
+<strong>Choose Category:</strong>
 <select id="category-input" type="text" placeholder="CATEGORY">
     <option value="Category" selected disabled hidden>Category</option> 
     <option value="TEDDIES">TEDDIES</option>    
     <option value="DOLLS">DOLLS</option>
     <option value="ART">ART</option>
 </select>
-<input id="name-input" type="text" placeholder="NAME" maxlength="13"/>
+<input id="name-input" type="text" placeholder="NAME" maxlength="13" required/>
 <input id="title-input" type="text" placeholder="TITLE" maxlength="24"/>
 <textarea id="description-input" rows="4" cols="50" placeholder="DESCRIPTION"></textarea>
 <input id="technic-input" type="text" placeholder="description of techniques" maxlength="20"/>
@@ -47,6 +47,13 @@
     <input type="checkbox" id="keyword16" name="keyword16" value="cheap">
     <label for="keyword16"> cheap</label>
 </div>
-<input id="price-input" type="number" step="0.01" placeholder="PRICE in EURO"/>
-<input id="discount-input" type="number" step="0.1" min="1" max="100" placeholder="discount %"/>
+<input id="price-input" type="number" step="0.01" placeholder="PRICE in EURO"
+    oninput="(function(){
+        document.getElementById('discount-price').innerText=(document.getElementById('price-input').value-
+        (document.getElementById('price-input').value*(document.getElementById('discount-input').value/100)).toFixed(2))})()"/>
+<input id="discount-input" type="number" step="0.1" min="1" max="100" placeholder="discount %"
+oninput="(function(){
+    document.getElementById('discount-price').innerText=(document.getElementById('price-input').value-
+    (document.getElementById('price-input').value*(document.getElementById('discount-input').value/100))).toFixed(2)})()"/>
+<p>Change the price or discount to see the price after discount: <strong id="discount-price"></strong>€</p>
 <button onclick="upload()">UPLOAD</button>

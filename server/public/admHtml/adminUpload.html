@@ -39,6 +39,10 @@
             background-size: contain;
             background-repeat: no-repeat;
         }
+
+        ::placeholder {
+            color: red;
+        }
     </style>
 
 </head>
@@ -123,7 +127,7 @@ async function sendPass(button) {
             keywords.push(checkboxes[x].value);
         }
 
-        const uploadData = {pictures: images, category, name, title, description, keywords, technic, price, discount};
+        const uploadData = {pictures: images, category, name, title, description, keywords, technic, price, discount:{set:false,percent:discount}};
 
         const fetchOptions = {
             method:'POST',

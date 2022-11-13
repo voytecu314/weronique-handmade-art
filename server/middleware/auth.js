@@ -14,6 +14,6 @@ try {
     req.user = decoded; //jwt payload
     next();
   } catch (error) {
-    res.status(500).json({token_error: error.message, auth: false});
+    res.status(500).json({error: error.message, auth: false});
   }
 };

@@ -152,10 +152,18 @@ https://www.tooplate.com/view/2119-gymso-fitness
                             <option value="PL">🇵🇱 Polish</option>
                         </select>
                     </li>
-
                 </ul>
+                
 
             </div>
+
+            <div style="display:grid; place-items: center;">
+                <div style="position:relative;">
+                    <a href="javascript:void(0)" class="fa fa-shopping-basket ml-lg-5" title="View basket" data-toggle="modal" data-target="#basket-modal" onclick="displayBasket(this)"></a>
+                    <div style="display: grid; place-items: center; position:absolute; bottom:0; right:0; width: 7px; height: 7px; border-radius: 50%; background-color: aqua; font-size: .4rem;"><span id="basket-count" style="color:black">0</span></div>
+                </div>
+            </div>
+
         </div>
         
 
@@ -232,59 +240,15 @@ https://www.tooplate.com/view/2119-gymso-fitness
      <!-- ABOUT -->
      <section class="about section" id="about">
                <div class="container">
-                    <div class="row">
+                
+                            <div class="mt-lg-5 mb-lg-0 mb-4 mx-auto">
+                                <h3 class="mb-4" data-aos="fade-up" data-aos-delay="300">About</h3>
 
-                            <div class="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
-                                <h3 id="item1-header" class="mb-4" data-aos="fade-up" data-aos-delay="300">Loading...</h3>
+                                <p data-aos="fade-up" data-aos-delay="400">Es ist die besonders herzliche Atmosphäre und das Gefühl von Authentizität, mit der unsere HandmadeART begeistert. Das Publikum schätzt vor allem die hohe Qualität und den Anspruch von nachhaltigen Produkten und einer fairen Herstellung. Wir arbeiten mit persönlich ausgewählten Designern, Manufakturen und professionellen DIY-Fans zusammen. Unsere Aussteller kommen aus dem ganzen Bundesgebiet und zeigen eine außergewöhnliche Vielfalt an Ideen und Unikaten.</p>
 
-                                <p id="item1-description" data-aos="fade-up" data-aos-delay="400">(if takes too long please refresh the page)</p>
-
-                                <p id="item1-technics" data-aos="fade-up" data-aos-delay="500"></p>
-
-                            </div>
-
-                            <div class="ml-lg-auto col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
-                                <div class="team-thumb">
-                                    <img style="cursor:zoom-in" id="item1-picture" class="img-fluid" alt="Loading picture..." onclick="zoomImg(this)">
-
-                                    <div class="team-info d-flex flex-column">
-
-                                        <h3 id="item1-name"></h3>
-                                        <span id="item1-title"></span>
-
-                                        <ul class="social-icon mt-3">
-                                            <li><a href="#" class="fa fa-paypal" title="Buy now" data-toggle="modal" data-target="#PayPalForm"></a></li>
-                                            <li><a href="#" class="fa fa-shopping-basket" title="Add to basket"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
-                                <h3 id="item2-header" class="mb-4" data-aos="fade-up" data-aos-delay="300">Loading...</h3>
-                                
-                                <p id="item2-description" data-aos="fade-up" data-aos-delay="400">(if takes too long please refresh the page)</p>
-
-                                <p id="item2-technics" data-aos="fade-up" data-aos-delay="500"></p>
+                                <p data-aos="fade-up" data-aos-delay="500">Es ist die besonders herzliche Atmosphäre und das Gefühl von Authentizität, mit der unsere HandmadeART begeistert. Das Publikum schätzt vor allem die hohe Qualität und den Anspruch von nachhaltigen Produkten und einer fairen Herstellung. Wir arbeiten mit persönlich ausgewählten Designern, Manufakturen und professionellen DIY-Fans zusammen. Unsere Aussteller kommen aus dem ganzen Bundesgebiet und zeigen eine außergewöhnliche Vielfalt an Ideen und Unikaten.</p>
 
                             </div>
-                            <div class="ml-lg-auto col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
-                                <div class="team-thumb">
-                                    <img style="cursor:zoom-in" id="item2-picture" class="img-fluid" alt="Loading picture..." onclick="zoomImg(this)">
-
-                                    <div class="team-info d-flex flex-column">
-
-                                        <h3 id="item2-name"></h3>
-                                        <span id="item2-title"></span>
-
-                                        <ul class="social-icon mt-3">
-                                            <li><a href="#" class="fa fa-paypal" title="Buy now"  data-toggle="modal" data-target="#PayPalForm"></a></li>
-                                            <li><a href="#" class="fa fa-shopping-basket" title="Add to basket"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                    </div>
                </div>
      </section>
 
@@ -352,6 +316,65 @@ https://www.tooplate.com/view/2119-gymso-fitness
                </div>
      </section>
 
+<!-- DISCOUNTS -->
+
+     <section class="about section" id="discounts">
+        <div class="container">
+             <div class="row">
+
+                     <div class="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
+                         <h3 id="item1-header" class="mb-4" data-aos="fade-up" data-aos-delay="300">Loading...</h3>
+
+                         <p id="item1-description" data-aos="fade-up" data-aos-delay="400">(if takes too long please refresh the page)</p>
+
+                         <p id="item1-technics" data-aos="fade-up" data-aos-delay="500"></p>
+
+                     </div>
+
+                     <div class="ml-lg-auto col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
+                         <div class="team-thumb">
+                             <img style="cursor:zoom-in" id="item1-picture" class="img-fluid" alt="Loading picture..." onclick="zoomImg(this)">
+
+                             <div class="team-info d-flex flex-column">
+
+                                 <h3 id="item1-name"></h3>
+                                 <span id="item1-title"></span>
+
+                                 <ul class="social-icon mt-3">
+                                     <li><a href="#" class="fa fa-paypal" title="Buy now" data-toggle="modal" data-target="#PayPalForm"></a></li>
+                                     <li><a id="item1-basket-icon" href="javascript:void(0)" class="fa fa-shopping-basket" title="Add to basket"></a></li>
+                                 </ul>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
+                         <h3 id="item2-header" class="mb-4" data-aos="fade-up" data-aos-delay="300">Loading...</h3>
+                         
+                         <p id="item2-description" data-aos="fade-up" data-aos-delay="400">(if takes too long please refresh the page)</p>
+
+                         <p id="item2-technics" data-aos="fade-up" data-aos-delay="500"></p>
+
+                     </div>
+                     <div class="ml-lg-auto col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
+                         <div class="team-thumb">
+                             <img style="cursor:zoom-in" id="item2-picture" class="img-fluid" alt="Loading picture..." onclick="zoomImg(this)">
+
+                             <div class="team-info d-flex flex-column">
+
+                                 <h3 id="item2-name"></h3>
+                                 <span id="item2-title"></span>
+
+                                 <ul class="social-icon mt-3">
+                                     <li><a href="#" class="fa fa-paypal" title="Buy now" data-toggle="modal" data-target="#PayPalForm"></a></li>
+                                     <li><a id="item2-basket-icon" href="javascript:void(0)" class="fa fa-shopping-basket" title="Add to basket"></a></li>
+                                 </ul>
+                             </div>
+                         </div>
+                     </div>
+
+             </div>
+        </div>
+</section>
 
      <!-- SEARCH -->
      <section class="schedule section" id="schedule">
@@ -365,38 +388,38 @@ https://www.tooplate.com/view/2119-gymso-fitness
                              </div>
 
                              <div class="col-lg-12 py-5 col-md-12 col-12">
-                                <div id="keywords" style="display: grid; grid-template-columns: repeat(4,1fr); gap: 1%; color:red">
-                                    <div style="text-align:center; border: 1px solid red; border-radius: 3px; cursor: pointer;"
+                                <div id="keywords" style="display: grid; grid-template-columns: repeat(4,1fr); gap: 1%; color:#b3a813">
+                                    <div style="text-align:center; border: 1px solid #b3a813; border-radius: 3px; cursor: pointer;"
                                     onclick="searchModal(this.innerText)">teddy</div>
-                                    <div style="text-align:center; border: 1px solid red; border-radius: 3px; cursor: pointer;"
+                                    <div style="text-align:center; border: 1px solid #b3a813; border-radius: 3px; cursor: pointer;"
                                     onclick="searchModal(this.innerText)">fluffy</div>
-                                    <div style="text-align:center; border: 1px solid red; border-radius: 3px; cursor: pointer;"
+                                    <div style="text-align:center; border: 1px solid #b3a813; border-radius: 3px; cursor: pointer;"
                                     onclick="searchModal(this.innerText)">gift</div>
-                                    <div style="text-align:center; border: 1px solid red; border-radius: 3px; cursor: pointer;"
+                                    <div style="text-align:center; border: 1px solid #b3a813; border-radius: 3px; cursor: pointer;"
                                     onclick="searchModal(this.innerText)">special</div>
-                                    <div style="text-align:center; border: 1px solid red; border-radius: 3px; cursor: pointer;"
+                                    <div style="text-align:center; border: 1px solid #b3a813; border-radius: 3px; cursor: pointer;"
                                     onclick="searchModal(this.innerText)">dark</div>
-                                    <div style="text-align:center; border: 1px solid red; border-radius: 3px; cursor: pointer;"
+                                    <div style="text-align:center; border: 1px solid #b3a813; border-radius: 3px; cursor: pointer;"
                                     onclick="searchModal(this.innerText)">cotton</div>
-                                    <div style="text-align:center; border: 1px solid red; border-radius: 3px; cursor: pointer;"
+                                    <div style="text-align:center; border: 1px solid #b3a813; border-radius: 3px; cursor: pointer;"
                                     onclick="searchModal(this.innerText)">doll</div>
-                                    <div style="text-align:center; border: 1px solid red; border-radius: 3px; cursor: pointer;"
+                                    <div style="text-align:center; border: 1px solid #b3a813; border-radius: 3px; cursor: pointer;"
                                     onclick="searchModal(this.innerText)">painting</div>
-                                    <div style="text-align:center; border: 1px solid red; border-radius: 3px; cursor: pointer;"
+                                    <div style="text-align:center; border: 1px solid #b3a813; border-radius: 3px; cursor: pointer;"
                                     onclick="searchModal(this.innerText)">image</div>
-                                    <div style="text-align:center; border: 1px solid red; border-radius: 3px; cursor: pointer;"
+                                    <div style="text-align:center; border: 1px solid #b3a813; border-radius: 3px; cursor: pointer;"
                                     onclick="searchModal(this.innerText)">animal</div>
-                                    <div style="text-align:center; border: 1px solid red; border-radius: 3px; cursor: pointer;"
+                                    <div style="text-align:center; border: 1px solid #b3a813; border-radius: 3px; cursor: pointer;"
                                     onclick="searchModal(this.innerText)">sport</div>
-                                    <div style="text-align:center; border: 1px solid red; border-radius: 3px; cursor: pointer;"
+                                    <div style="text-align:center; border: 1px solid #b3a813; border-radius: 3px; cursor: pointer;"
                                     onclick="searchModal(this.innerText)">boy</div>
-                                    <div style="text-align:center; border: 1px solid red; border-radius: 3px; cursor: pointer;"
+                                    <div style="text-align:center; border: 1px solid #b3a813; border-radius: 3px; cursor: pointer;"
                                     onclick="searchModal(this.innerText)">girl</div>
-                                    <div style="text-align:center; border: 1px solid red; border-radius: 3px; cursor: pointer;"
+                                    <div style="text-align:center; border: 1px solid #b3a813; border-radius: 3px; cursor: pointer;"
                                     onclick="searchModal(this.innerText)">happy</div>
-                                    <div style="text-align:center; border: 1px solid red; border-radius: 3px; cursor: pointer;"
+                                    <div style="text-align:center; border: 1px solid #b3a813; border-radius: 3px; cursor: pointer;"
                                     onclick="searchModal(this.innerText)">little</div>
-                                    <div style="text-align:center; border: 1px solid red; border-radius: 3px; cursor: pointer;"
+                                    <div style="text-align:center; border: 1px solid #b3a813; border-radius: 3px; cursor: pointer;"
                                     onclick="searchModal(this.innerText)">cheap</div>
                                 </div>
                              </div>
@@ -510,13 +533,38 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
     <!-- PayPal MODAL -->
 
-    <div class="modal fade" id="PayPalForm" tabindex="-1" role="dialog" aria-labelledby="PaypalFormLabel" aria-hidden="true">
+    <div class="modal fade" id="PayPalForm" tabindex="-1" role="dialog" aria-labelledby="basketLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
   
           <div class="modal-content">
             <div class="modal-header">
   
-              <h2 class="modal-title" id="PaypalFormLabel">PayPal</h2>
+              <h2 class="modal-title" id="basketLabel">PayPal</h2>
+  
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+  
+            <div class="modal-body">
+              
+            </div>
+  
+            <div class="modal-footer"></div>
+  
+          </div>
+        </div>
+      </div>
+
+    <!-- Basket MODAL -->
+
+    <div class="modal fade" id="basket-modal" tabindex="-1" role="dialog" aria-labelledby="basketLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+  
+          <div class="modal-content">
+            <div class="modal-header">
+  
+              <h2 class="modal-title" id="basketLabel">Your Basket</h2>
   
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -541,13 +589,16 @@ https://www.tooplate.com/view/2119-gymso-fitness
      <script src="js/custom.js"></script>
      <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
-    </script>
-    <script src="js/added-scripts/contactForm.js"></script>
-    <script src="js/added-scripts/checkJWT.js" async></script>
-    <script src="js/added-scripts/onload.js"></script>
-    <script src="js/added-scripts/fetchEvent.js"></script>
-    <script src="js/added-scripts/loginSignUp.js" async></script>
-    <script src="js/addedScript.js" async></script>
+     </script>
+     <script src="js/added-scripts/contactForm.js"></script>
+     <script src="js/added-scripts/checkJWT.js"></script>
+     <script src="js/added-scripts/onload.js"></script>
+     <script src="js/added-scripts/fetchEvent.js"></script>
+     <script src="js/added-scripts/infoModal.js"></script>
+     <script src="js/added-scripts/loginSignUp.js" async></script>
+     <script src="js/added-scripts/addToBasket.js"></script>
+     <script src="js/added-scripts/displayBasket.js"></script>
+     <script src="js/added-scripts/searchScript.js" async></script>
 
 </body>
 </html>

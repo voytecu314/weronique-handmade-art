@@ -9,7 +9,7 @@ module.exports = async (req,res) => {
 
     if(user.activated){
       res.status(200).send(`<div style="width: 50vw; margin: 15% auto">
-                              <h1>Your account is now active, please login</h1>
+                              <h1>Your account is now active, <span style="color: red">please login</span></h1>
                               <a href="http://localhost:5000/">Go to Weronique-Handmade-ART</a>
                             </div>`);
     }

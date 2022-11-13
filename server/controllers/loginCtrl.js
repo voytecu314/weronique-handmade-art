@@ -82,8 +82,7 @@ const userLogin = async (req, res) => {
     const payload = {
         activation_id: user.activation_id,
         name: user.user_name,
-        basket: user.basket,
-        auth: true
+        basket: user.basket
     }; 
 
     jwt.sign(payload, process.env.JWT_RANDOM_STRING, { expiresIn: "1h" }, (err, token) => {
@@ -98,7 +97,7 @@ const userLogin = async (req, res) => {
 const isLogged = async (req, res) => {
   
   try {
-    res.status(200).json({name: req.user.name});
+    res.status(200).json(req.user);
   } catch (error) {
     res.json({error});
   }

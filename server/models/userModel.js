@@ -5,8 +5,10 @@ const itemSchema = new mongoose.Schema({
     item_name: String,
     item_style: String,
     item_value: Number,
-    discount: Boolean,
-    item_quantity: Number
+    discount: Number,
+    item_value_after_discount: Number,
+    item_quantity: Number,
+    date_added: Date
 });
 
 const basketSchema = new mongoose.Schema({
