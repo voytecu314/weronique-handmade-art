@@ -1,7 +1,16 @@
 const artWorkModel = require('../models/artWorkModel.js');
 const userModel = require('../models/userModel.js');
 
-module.exports = async (req, res) => {
+const getSessionBasketCtrl = async (req, res) => {
+    try {
+        const sessionBasket = await artWorkModel.find({_id:{$in: req.body}}).select(['-category','-description','-keywords','-technic','-__v']);
+        res.status(200).json({sessionBasket});
+    } catch (error) {
+        res.status(500).json({error:error.message});
+    }
+}
+
+const addToBasketCtrl = async (req, res) => {
 
     try {
         const filter = {activation_id: req.user.activation_id,name: req.user.name};
@@ -30,3 +39,5 @@ module.exports = async (req, res) => {
     }
 
 }
+
+module.exports = { getSessionBasketCtrl, addToBasketCtrl };

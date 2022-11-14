@@ -81,8 +81,7 @@ const userLogin = async (req, res) => {
 
     const payload = {
         activation_id: user.activation_id,
-        name: user.user_name,
-        basket: user.basket
+        name: user.user_name
     }; 
 
     jwt.sign(payload, process.env.JWT_RANDOM_STRING, { expiresIn: "1h" }, (err, token) => {

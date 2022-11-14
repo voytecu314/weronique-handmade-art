@@ -13,8 +13,8 @@ function checkJWT (item=undefined) {
         fetch('http://localhost:5000/user-login/is-logged', fetchAuthOptions)
         .then(res=>res.json())
         .then(data=>{
-            if(data.token_error){
-                console.log(data.token_error);
+            if(data.error){
+                console.log(data.error);
                 localStorage.removeItem('W-H-A-JWT-Token');
                 checkJWT();
                 throw new Error('JWT token error - new login might be necessary');

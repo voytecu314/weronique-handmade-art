@@ -1,8 +1,10 @@
 const express = require('express');
-const addToBasketCtrl = require('../controllers/addToBasketCtrl.js');
+const {addToBasketCtrl, getSessionBasketCtrl} = require('../controllers/basketCtrl.js');
 const auth = require('../middleware/auth.js');
 
 const router = express.Router();
+
+router.post('/get-session-basket',getSessionBasketCtrl);
 
 router.post('/add-item',auth,addToBasketCtrl);
 

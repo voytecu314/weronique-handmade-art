@@ -9,7 +9,7 @@ function addToBasket(item) {
         if(!sessionBasket.includes(item.id))
         document.body.insertAdjacentHTML('beforeend',infoModal('Item added to no-login session basket!'));
         
-        !sessionBasket.includes(item.id) && sessionBasket.push(item.id);console.log(sessionBasket);
+        !sessionBasket.includes(item.id) && sessionBasket.push(item.id);
       }  
       
       sessionStorage.setItem('W-H-A-Session-Basket',JSON.stringify(sessionBasket));
@@ -30,8 +30,7 @@ function addToBasket(item) {
             .then(res=>res.json())
             .then(msg=>{msg.error?
                         document.body.insertAdjacentHTML('beforeend',infoModal(msg.error+' Please reload the page or login again')):
-                        document.body.insertAdjacentHTML('beforeend',infoModal(msg));
-                      console.log(msg);})
+                        document.body.insertAdjacentHTML('beforeend',infoModal(msg));})
             .catch(console.log);
     }
 
