@@ -10,6 +10,25 @@ const getSessionBasketCtrl = async (req, res) => {
     }
 }
 
+const getUserBasketCtrl = async (req, res) => {
+    try {
+        const { activation_id } = req.user;
+        const user = await userModel.findOne({ activation_id });
+        const basketData = [];
+
+        for(let i=0; i<user.basket.length; i++) {
+            const {_id, item_name, item_style, item_value, discount, item_value_after_discount} = 
+            user.basket[i];
+
+            basketData.push({_id, item_name, item_style, item_value, discount, item_value_after_discount});
+        }
+
+        res.status(200).json(basketData);
+    } catch (error) {
+        res.status(500).json({error:error.message});
+    }
+}
+
 const addToBasketCtrl = async (req, res) => {
 
     try {
@@ -40,4 +59,20 @@ const addToBasketCtrl = async (req, res) => {
 
 }
 
-module.exports = { getSessionBasketCtrl, addToBasketCtrl };
+const removeFromUserBasket = async (req, res) => {
+    try {
+        
+        const user = await userModel.findOne({ activation_id: req.user.activation_id });
+
+        const newBasket = user.basket.filter(item=>item._id!=req.body.item_id);
+
+        await userModel.updateOne({ activation_id: req.user.activation_id }, 
+            { basket: newBasket });
+console.log(user.basket.filter(item=>item._id=req.body.item_id).pop());
+        res.status(200).json({msg: 'Item removed from db basket', removed: user.basket.filter(item=>item._id=req.body.item_id).pop()});
+    } catch (error) {
+        res.status(500).json({error:error.message})
+    }
+}
+
+module.exports = { getSessionBasketCtrl, getUserBasketCtrl, addToBasketCtrl, removeFromUserBasket };
