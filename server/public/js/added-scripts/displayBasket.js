@@ -8,21 +8,49 @@ const basket_elements = {
         <th>Remove</th>
         </tr>
     </table>`,
-    totalPrice: `<div class="mt-5">
-        <p>Total: <span id="total-price">0€</span></p>
-        <p>Total price after discount: <span id="total-price-after-discount" style="color: lightgreen">0€</span></p>
+    totalPrice: `<div class="mt-5 d-flex justify-content-between">
+        <div>
+            <p>Total: <span id="total-price">0€</span></p>
+            <p>Total price after discount: <span id="total-price-after-discount" style="color: lightgreen">0€</span></p>
+        </div>
+        <i class="fa fa-paypal mt-4" title="PayPal checkout"></i>
     </div>`
 }
 
+const removeItem = (el) => {
+    const fetchOptions = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type':'application/json',
+            token: localStorage.getItem('W-H-A-JWT-Token')
+        },
+        body: JSON.stringify({item_id: el.id})
+    }
+
+    fetch('http://localhost:5000/basket/remove-item',fetchOptions)
+    .then(res=>res.json())
+    .then(({removed: {item_value, item_value_after_discount}})=>{
+        console.log(item_value, item_value_after_discount);
+        document.getElementById('total-price').innerText = 
+        (Number(document.getElementById('total-price').innerText)-item_value).toFixed(2);
+        document.getElementById('total-price-after-discount').innerText =
+        (Number(document.getElementById('total-price-after-discount').innerText)-item_value_after_discount).toFixed(2);
+
+    })
+    .catch(err=>console.log('Removing item from DB basket failed!', err.message));
+
+    el.parentElement.parentElement.remove();
+}
+
 function displayBasket(x) {
+
+    basketModalBody.innerHTML = basket_elements.table + basket_elements.totalPrice;
     
     if(checkJWT(x)?.user_auth){
 
         const sessionBasket = sessionStorage.getItem('W-H-A-Session-Basket');
 
         if(sessionBasket && JSON.parse(sessionBasket).length!=0){
-
-            basketModalBody.innerHTML = basket_elements.table + basket_elements.totalPrice;
 
             const fetchOptions = {
                 method: 'POST',
@@ -35,12 +63,13 @@ function displayBasket(x) {
             .then(({sessionBasket})=>{
 
                 const calculateBasketPrice = (sessionBasket) => document.getElementById('total-price').innerText=`${sessionBasket.reduce((sum,item)=>sum+item.price,0).toFixed(2)}€`;
-                const calculateTotalDiscount = (sessionBasket) => document.getElementById('total-price-after-discount').innerText=`${sessionBasket.reduce((sum,item)=>{
+                const calculateTotalDiscount = (sessionBasket) => document.getElementById('total-price-after-discount').innerText=
+                `${sessionBasket.reduce((sum,item)=>{
                     const itemDiscountPrice = item.discount.set?(item.price-item.price*(item.discount.percent/100)):item.price;
                     return sum+itemDiscountPrice},0).toFixed(2)}€`;
 
                 const basketTable = document.getElementById('basket-table');
-                sessionBasket.map((item,i)=>basketTable.insertAdjacentHTML('beforeend',
+                sessionBasket.map(item=>basketTable.insertAdjacentHTML('beforeend',
                     `<tr>
                         <td>${item.name} - ${item.title}</td>
                         <td  class="text-right">${item.price}€</td>
@@ -65,6 +94,39 @@ function displayBasket(x) {
             }
     } else {
 
-        console.log('logged');
+        const fetchOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type':'application/json',
+                token: localStorage.getItem('W-H-A-JWT-Token')
+            }
+        }
+
+        fetch('http://localhost:5000/basket/get-user-basket',fetchOptions)
+        .then(res=>res.json()).then(sessionBasket=>{
+
+            const basketTable = document.getElementById('basket-table');
+            sessionBasket.map(({_id, item_name, item_style, item_value, discount})=>
+                                basketTable.insertAdjacentHTML('beforeend',
+                `<tr>
+                    <td>${item_name} - ${item_style}</td>
+                    <td  class="text-right">${item_value}€</td>
+                    <td  class="text-right">${discount}%</td>
+                    <td  class="text-center">
+                        <a href='#' id="${_id}" onclick="removeItem(this)">
+                            <i class="fa fa-close"></i>
+                        </a></td>
+                </tr>`));
+            
+                document.getElementById('total-price').innerText = 
+                (sessionBasket.reduce((sum,{item_value})=>sum+item_value,0))
+                .toFixed(2);
+
+                document.getElementById('total-price-after-discount').innerText = 
+                (sessionBasket.reduce((sum,{item_value_after_discount})=>sum+item_value_after_discount,0))
+                .toFixed(2);
+            }) 
+        .catch(err=>console.log('User basket fetch error',err.message));
+
     }
 }
