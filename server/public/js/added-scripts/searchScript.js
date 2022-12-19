@@ -30,9 +30,14 @@
 
                                     <ul style="background-image:linear-gradient(90deg,aliceblue,white,aliceblue); text-align: center" class="social-icon mt-3">
                                         <li><span>${item.title}</span></li>
-                                        <li style="cursor:pointer"><a href="#" class="fa fa-paypal" title="Buy now"  data-toggle="modal" data-target="#PayPalForm"></a></li>
-                                        <li style="cursor:pointer"><a href="#" class="fa fa-shopping-basket" title="Add to basket"
-                                                                     onclick="addToBasket({'id':'${item._id}'})"></a></li>
+                                        <li style="cursor:pointer">
+                                            <a href="#" class="fa fa-paypal" title="Buy now"  
+                                                onclick="( ()=>{sessionStorage.setItem('purchaseReady',JSON.stringify(['${item._id}']))} )()" data-toggle="modal" data-target="#PayPalForm"></a>
+                                        </li>
+                                        <li style="cursor:pointer">
+                                            <a href="#" class="fa fa-shopping-basket" title="Add to basket"
+                                                onclick="addToBasket({'id':'${item._id}'})"></a>
+                                        </li>
                                     </ul>
 
                                 </div>
