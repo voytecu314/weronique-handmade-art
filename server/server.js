@@ -1,5 +1,7 @@
+require('dotenv').config();
 const express = require('express');
 const connectMongo = require('./mongo/mongo_connect.js');
+const paypal =require('./paypal-api.js');
 const adminRoutes = require('./routes/display-routes/adminRoutes.js');
 const modifyResourcesRoutes = require('./routes/modifyResourcesRoutes.js');
 const getOnLoadArtWorks = require('./routes/onLoadArtWorks.js');
@@ -44,6 +46,28 @@ app.get('/', (req, res) => {
     }
 
 } );
+
+
+//Move this to paypal-routes
+
+app.post("/api/orders", async (req, res) => {
+    try {
+      const order = await paypal.createOrder(6);
+      res.json(order);
+    } catch (err) {
+      res.status(500).send(err.message);
+    }
+  });
+  
+  app.post("/api/orders/:orderID/capture", async (req, res) => {
+    const { orderID } = req.params;
+    try {
+      const captureData = await paypal.capturePayment(orderID);
+      res.json(captureData);
+    } catch (err) {
+      res.status(500).send(err.message);
+    }
+  });
 
 
 app.listen(PORT, ()=>console.log('Server listens on port', PORT))

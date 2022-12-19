@@ -16,7 +16,7 @@ function checkJWT (item=undefined) {
             if(data.error){
                 console.log(data.error);
                 localStorage.removeItem('W-H-A-JWT-Token');
-                checkJWT();
+                checkJWT();location.reload();
                 throw new Error('JWT token error - new login might be necessary');
             } else if(!item){
                 document.getElementById('greet').innerText=`Hello  ${data.name} !`;

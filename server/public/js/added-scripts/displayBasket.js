@@ -29,13 +29,18 @@ const removeItem = (el) => {
 
     fetch('http://localhost:5000/basket/remove-item',fetchOptions)
     .then(res=>res.json())
-    .then(({removed: {item_value, item_value_after_discount}})=>{
-        console.log(item_value, item_value_after_discount);
+    .then(({newBasket})=>{
+        
         document.getElementById('total-price').innerText = 
-        (Number(document.getElementById('total-price').innerText)-item_value).toFixed(2);
-        document.getElementById('total-price-after-discount').innerText =
-        (Number(document.getElementById('total-price-after-discount').innerText)-item_value_after_discount).toFixed(2);
+        (newBasket.reduce((sum,{item_value})=>sum+item_value*100,0))/100;
 
+        document.getElementById('total-price-after-discount').innerText = 
+        (newBasket.reduce((sum,{item_value_after_discount})=>sum+item_value_after_discount*100,0))/100;
+
+        const purchaseReady = newBasket.map(({item_id})=>item_id);
+        sessionStorage.setItem('purchaseReady', JSON.stringify(purchaseReady));
+
+       
     })
     .catch(err=>console.log('Removing item from DB basket failed!', err.message));
 
@@ -49,6 +54,7 @@ function displayBasket(x) {
     if(checkJWT(x)?.user_auth){
 
         const sessionBasket = sessionStorage.getItem('W-H-A-Session-Basket');
+        sessionStorage.setItem('purchaseReady',sessionBasket);
 
         if(sessionBasket && JSON.parse(sessionBasket).length!=0){
 
@@ -75,7 +81,7 @@ function displayBasket(x) {
                         <td  class="text-right">${item.price}€</td>
                         <td  class="text-right">${item.discount.set?item.discount.percent:0}%</td>
                         <td  class="text-center">
-                            <a href='#' id="${item._id}" onclick="(()=>{const sessionBasket = JSON.parse(sessionStorage.getItem('W-H-A-Session-Basket')).filter(id=>id!=this.id); sessionStorage.setItem('W-H-A-Session-Basket',JSON.stringify(sessionBasket));this.parentElement.parentElement.remove(); displayBasket(this) })(this)">
+                            <a href='#' id="${item._id}" onclick="(()=>{const sessionBasket = JSON.parse(sessionStorage.getItem('W-H-A-Session-Basket')).filter(id=>id!=this.id); sessionStorage.setItem('W-H-A-Session-Basket',JSON.stringify(sessionBasket)); sessionStorage.setItem('purchaseReady',JSON.stringify(sessionBasket));this.parentElement.parentElement.remove(); displayBasket(this) })(this)">
                                 <i class="fa fa-close"></i>
                             </a></td>
                     </tr>`));
@@ -103,28 +109,32 @@ function displayBasket(x) {
         }
 
         fetch('http://localhost:5000/basket/get-user-basket',fetchOptions)
-        .then(res=>res.json()).then(sessionBasket=>{
-
+        .then(res=>res.json()).then(userBasket=>{
+            const purchaseReady = [];
             const basketTable = document.getElementById('basket-table');
-            sessionBasket.map(({_id, item_name, item_style, item_value, discount})=>
-                                basketTable.insertAdjacentHTML('beforeend',
+            userBasket.map(({item_id, item_name, item_style, item_value, discount})=>{
+                purchaseReady.push(item_id);
+                basketTable.insertAdjacentHTML('beforeend',
                 `<tr>
                     <td>${item_name} - ${item_style}</td>
                     <td  class="text-right">${item_value}€</td>
                     <td  class="text-right">${discount}%</td>
                     <td  class="text-center">
-                        <a href='#' id="${_id}" onclick="removeItem(this)">
+                        <a href='#' id="${item_id}" onclick="removeItem(this)">
                             <i class="fa fa-close"></i>
                         </a></td>
-                </tr>`));
+                </tr>`);
+                });
             
+                sessionStorage.setItem('purchaseReady',JSON.stringify(purchaseReady));
+
                 document.getElementById('total-price').innerText = 
-                (sessionBasket.reduce((sum,{item_value})=>sum+item_value,0))
-                .toFixed(2);
+                (userBasket.reduce((sum,{item_value})=>sum+item_value*100,0))
+                /100;
 
                 document.getElementById('total-price-after-discount').innerText = 
-                (sessionBasket.reduce((sum,{item_value_after_discount})=>sum+item_value_after_discount,0))
-                .toFixed(2);
+                (userBasket.reduce((sum,{item_value_after_discount})=>sum+item_value_after_discount*100,0))
+                /100;
             }) 
         .catch(err=>console.log('User basket fetch error',err.message));
 

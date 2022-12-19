@@ -1,4 +1,5 @@
 <h1>Hi Nisia!</h1>
+<form style="display: grid; place-items: center; gap: 2%" onsubmit="upload()">
 <input type="file" id="images-input" multiple="multiple" accept="image/jpeg, image/png, image/jpg" required/>
 <label for="result" >First picture is DEFAULT THUMBNAIL</label>
 <output id="result" style="display:flex; gap: 3px"></output>
@@ -56,4 +57,5 @@ oninput="(function(){
     document.getElementById('discount-price').innerText=(document.getElementById('price-input').value-
     (document.getElementById('price-input').value*(document.getElementById('discount-input').value/100))).toFixed(2)})()"/>
 <p>Change the price or discount to see the price after discount: <strong id="discount-price"></strong>€</p>
-<button onclick="upload()">UPLOAD</button>
+<button type="submit">UPLOAD</button>
+</form>

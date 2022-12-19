@@ -17,10 +17,7 @@ const getUserBasketCtrl = async (req, res) => {
         const basketData = [];
 
         for(let i=0; i<user.basket.length; i++) {
-            const {_id, item_name, item_style, item_value, discount, item_value_after_discount} = 
-            user.basket[i];
-
-            basketData.push({_id, item_name, item_style, item_value, discount, item_value_after_discount});
+            basketData.push(user.basket[i]);
         }
 
         res.status(200).json(basketData);
@@ -64,12 +61,12 @@ const removeFromUserBasket = async (req, res) => {
         
         const user = await userModel.findOne({ activation_id: req.user.activation_id });
 
-        const newBasket = user.basket.filter(item=>item._id!=req.body.item_id);
+        const newBasket = user.basket.filter(({item_id})=>item_id!=req.body.item_id);
 
         await userModel.updateOne({ activation_id: req.user.activation_id }, 
             { basket: newBasket });
-console.log(user.basket.filter(item=>item._id=req.body.item_id).pop());
-        res.status(200).json({msg: 'Item removed from db basket', removed: user.basket.filter(item=>item._id=req.body.item_id).pop()});
+
+        res.status(200).json({msg: 'Item removed from db basket', newBasket});
     } catch (error) {
         res.status(500).json({error:error.message})
     }
