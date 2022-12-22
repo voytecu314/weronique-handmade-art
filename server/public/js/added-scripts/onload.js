@@ -22,6 +22,8 @@ checkJWT();
     const technics2 = document.getElementById('item2-technics');
     const basket1Icon = document.getElementById('item1-basket-icon');
     const basket2Icon = document.getElementById('item2-basket-icon');
+    const paypal1Icon = document.getElementById('item1-paypal-icon');
+    const paypal2Icon = document.getElementById('item2-paypal-icon');
 
     fetch('http://localhost:5000/get-items-onload')
         .then(res=>res.json())
@@ -45,6 +47,10 @@ checkJWT();
 
             basket1Icon.addEventListener('click',()=>addToBasket(item1));
             basket2Icon.addEventListener('click',()=>addToBasket(item2));
+            paypal1Icon.addEventListener('click',()=>{
+                sessionStorage.setItem('purchaseReady',JSON.stringify([item1._id]))});
+            paypal2Icon.addEventListener('click',()=>{
+                sessionStorage.setItem('purchaseReady',JSON.stringify([item2._id]))});
         })
         .catch(err=>{
             console.log('Pictures onload error: ',err.message)

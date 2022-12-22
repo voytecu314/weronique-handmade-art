@@ -13,8 +13,8 @@ const basket_elements = {
             <p>Total: <span id="total-price">0€</span></p>
             <p>Total price after discount: <span id="total-price-after-discount" style="color: lightgreen">0€</span></p>
         </div>
-        <i class="fa fa-paypal mt-4" title="PayPal checkout"></i>
-    </div>`
+        <a href="#" class="fa fa-paypal" title="PayPal checkout" data-toggle="modal" data-target="#PayPalForm" data-dismiss="modal"></a>
+        </div>`
 }
 
 const removeItem = (el) => {
