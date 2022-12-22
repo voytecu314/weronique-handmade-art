@@ -9,8 +9,6 @@ paypal
               method: "post",
               headers:{'Content-Type':'application/json'},
               body: sessionStorage.getItem('purchaseReady')
-              // use the "body" param to optionally pass additional order information
-              // like product ids or amount
             })
               .then((response) => response.json())
               .then((order) => order.id);
