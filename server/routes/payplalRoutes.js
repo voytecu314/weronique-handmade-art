@@ -1,12 +1,16 @@
+const paypal =require('../paypal-api.js');
+const auth = require('../middleware/authPurchase.js');
 const {Router} = require('express');
-const mongoose = require('mongoose');
+const itemsModel = require('../models/artWorkModel.js');
 
 const router = Router();
 
-router.post("/api/orders", async (req, res) => {
+router.post("/api/orders", auth, async (req, res) => {
     try {
+      const toPurchase = await itemsModel.find({ _id: { $in: req.body } }); 
+      
 
-      console.log(req.body);
+      console.log(req.user?.auth && req.user.auth,'\n',toPurchase.map(item=>item.name));
 
       const order = await paypal.createOrder(6);
       res.json(order);

@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const connectMongo = require('./mongo/mongo_connect.js');
-const paypal =require('./paypal-api.js');
 const adminRoutes = require('./routes/display-routes/adminRoutes.js');
 const modifyResourcesRoutes = require('./routes/modifyResourcesRoutes.js');
 const getOnLoadArtWorks = require('./routes/onLoadArtWorks.js');

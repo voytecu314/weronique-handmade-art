@@ -81,10 +81,11 @@ const userLogin = async (req, res) => {
 
     const payload = {
         activation_id: user.activation_id,
-        name: user.user_name
+        name: user.user_name,
+        auth: true
     }; 
 
-    jwt.sign(payload, process.env.JWT_RANDOM_STRING, { expiresIn: "1h" }, (err, token) => {
+    jwt.sign(payload, process.env.JWT_RANDOM_STRING, { expiresIn: 60 }, (err, token) => {
       if (err) throw err;
       res.status(200).json({ msg:`Hello ${user.user_name}! You are now logged`, token });
     });
