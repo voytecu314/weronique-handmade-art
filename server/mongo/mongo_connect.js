@@ -7,7 +7,7 @@ const connectMongo = () => {
     mongoose.connect(MONGO_DB_URL );
 
     // When successfully connected
-mongoose.connection.on('connected', function () {  
+  mongoose.connection.on('connected', function () {  
     console.log('Mongoose default connection open');
   }); 
   
