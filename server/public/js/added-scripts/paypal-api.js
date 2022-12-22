@@ -5,8 +5,10 @@ paypal
               },
           // Sets up the transaction when a payment button is clicked
           createOrder: function (data, actions) {
-            return fetch("http://localhost:5000/api/orders", {
+            return fetch("http://localhost:5000/paypal/api/orders", {
               method: "post",
+              headers:{'Content-Type':'application/json'},
+              body: sessionStorage.getItem('purchaseReady')
               // use the "body" param to optionally pass additional order information
               // like product ids or amount
             })
@@ -15,7 +17,7 @@ paypal
           },
           // Finalize the transaction after payer approval
           onApprove: function (data, actions) {
-            return fetch(`http://localhost:5000/api/orders/${data.orderID}/capture`, {
+            return fetch(`http://localhost:5000/paypal/api/orders/${data.orderID}/capture`, {
               method: "post",
             })
               .then((response) => response.json())

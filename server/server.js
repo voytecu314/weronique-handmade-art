@@ -12,6 +12,7 @@ const loginRoutes = require('./routes/loginRoutes.js');
 const accountActivationRoute = require('./routes/display-routes/accountActivationRoute.js');
 const upcomingEventRoute = require('./routes/upcomingEventRoute.js');
 const basketRoutes = require('./routes/basketRoutes.js');
+const paypalRoutes = require('./routes/payplalRoutes.js');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -29,6 +30,7 @@ app.use('/user-login',loginRoutes);
 app.use('/activate-account',accountActivationRoute);
 app.use('/upcoming-event',upcomingEventRoute);
 app.use('/basket',basketRoutes);
+app.use('/paypal',paypalRoutes);
 
 connectMongo();
 
@@ -50,8 +52,11 @@ app.get('/', (req, res) => {
 
 //Move this to paypal-routes
 
-app.post("/api/orders", async (req, res) => {
+/* app.post("/api/orders", async (req, res) => {
     try {
+
+      console.log(req.body);
+
       const order = await paypal.createOrder(6);
       res.json(order);
     } catch (err) {
@@ -67,7 +72,7 @@ app.post("/api/orders", async (req, res) => {
     } catch (err) {
       res.status(500).send(err.message);
     }
-  });
+  }); */
 
 
 app.listen(PORT, ()=>console.log('Server listens on port', PORT))
