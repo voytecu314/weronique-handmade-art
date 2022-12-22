@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 const { PAYPAL_CLIENT_ID, PAYPAL_APP_SECRET } = process.env;
 const base = "https://api-m.sandbox.paypal.com";
 
-async function createOrder(value) {
+async function createOrder(orderObject) {
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders`;
   const response = await fetch(url, {
@@ -12,43 +12,7 @@ async function createOrder(value) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${accessToken}`,
     },
-    body: JSON.stringify({
-      intent: "CAPTURE",
-      purchase_units: [
-        {
-          amount: {
-            currency_code: "EUR",
-            value,
-            breakdown: {
-                item_total: {
-                  currency_code: "EUR",
-                  value,
-                },
-              },
-          },
-          items: [
-            {
-                name: 'Tedyy Beddy',
-                quantity: 1,
-                unit_amount: {
-                    currency_code: "EUR",
-                    value: 3.50
-                },
-                description: 'Teddy that will rock and roll all night long'
-            },
-            {
-                name: 'Sally Bally',
-                quantity: 1,
-                unit_amount: {
-                    currency_code: "EUR",
-                    value: 2.50
-                },
-                description: 'Very nice doll to play with'
-            }
-          ]
-        },
-      ],
-    }),
+    body: JSON.stringify(orderObject),
   });
 
   return handleResponse(response);

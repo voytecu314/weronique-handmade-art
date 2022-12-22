@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {
 
     try {
 
-        const token = req.headers.token; console.log('token', token);
+        const token = req.headers.token; //console.log('token', token);
         
         if (!token || token==='null') {
             req.user = {auth:false}; //console.log('no token');
