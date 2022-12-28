@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 
 const { PAYPAL_CLIENT_ID, PAYPAL_APP_SECRET } = process.env;
-const base = "https://api-m.sandbox.paypal.com";
+const base = "https://api-m.paypal.com";
 
 async function createOrder(orderObject) {
   const accessToken = await generateAccessToken();
