@@ -5,7 +5,7 @@ paypal
               },
           // Sets up the transaction when a payment button is clicked
           createOrder: function (data, actions) {
-            return fetch("http://localhost:5000/paypal/api/orders", {
+            return fetch("https://weronique.onrender.com/paypal/api/orders", {
               method: "post",
               headers:{
                 'Content-Type':'application/json',
@@ -19,7 +19,7 @@ paypal
           },
           // Finalize the transaction after payer approval
           onApprove: function (data, actions) {
-            return fetch(`http://localhost:5000/paypal/api/orders/${data.orderID}/capture`, {
+            return fetch(`https://weronique.onrender.com/paypal/api/orders/${data.orderID}/capture`, {
               method: "post",
             })
               .then((response) => response.json())
@@ -30,7 +30,7 @@ paypal
                   orderData,
                   JSON.stringify(orderData, null, 2)
                 );
-                
+
                 document.getElementById('basketLabel').innerText = '';
                 document.getElementById('paypal-button-container').innerHTML = '<h3>Thank you for your payment!</h3>';
 

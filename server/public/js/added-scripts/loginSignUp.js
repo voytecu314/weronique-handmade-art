@@ -54,7 +54,7 @@ function showSignUpForm(paraBtn) {
 }
 
 function fetchLoginData(prefix, fetchOpt) {
-    fetch(`http://localhost:5000/user-login/${prefix}`, fetchOpt)
+    fetch(`https://weronique.onrender.com/user-login/${prefix}`, fetchOpt)
                 .then(res=>res.json())
                 .then(answer=>{document.body.innerHTML+=infoModal(answer.msg);
 

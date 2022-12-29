@@ -25,7 +25,7 @@ checkJWT();
     const paypal1Icon = document.getElementById('item1-paypal-icon');
     const paypal2Icon = document.getElementById('item2-paypal-icon');
 
-    fetch('http://localhost:5000/get-items-onload')
+    fetch('https://weronique.onrender.com/get-items-onload')
         .then(res=>res.json())
         .then(([item1,item2])=>{
             item1.id=item1._id;

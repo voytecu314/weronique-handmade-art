@@ -27,7 +27,7 @@ const removeItem = (el) => {
         body: JSON.stringify({item_id: el.id})
     }
 
-    fetch('http://localhost:5000/basket/remove-item',fetchOptions)
+    fetch('https://weronique.onrender.com/basket/remove-item',fetchOptions)
     .then(res=>res.json())
     .then(({newBasket})=>{
         
@@ -64,7 +64,7 @@ function displayBasket(x) {
                 body: sessionBasket
             }
 
-            fetch('http://localhost:5000/basket/get-session-basket',fetchOptions)
+            fetch('https://weronique.onrender.com/basket/get-session-basket',fetchOptions)
             .then(res=>res.json())
             .then(({sessionBasket})=>{
 
@@ -108,7 +108,7 @@ function displayBasket(x) {
             }
         }
 
-        fetch('http://localhost:5000/basket/get-user-basket',fetchOptions)
+        fetch('https://weronique.onrender.com/basket/get-user-basket',fetchOptions)
         .then(res=>res.json()).then(userBasket=>{
             const purchaseReady = [];
             const basketTable = document.getElementById('basket-table');

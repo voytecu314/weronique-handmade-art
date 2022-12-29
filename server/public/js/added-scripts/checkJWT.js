@@ -10,7 +10,7 @@ function checkJWT (item=undefined) {
             }
         }
     
-        fetch('http://localhost:5000/user-login/is-logged', fetchAuthOptions)
+        fetch('https://weronique.onrender.com/user-login/is-logged', fetchAuthOptions)
         .then(res=>res.json())
         .then(data=>{
             if(data.error){

@@ -26,7 +26,7 @@ function addToBasket(item) {
                 }
     
 
-        fetch('http://localhost:5000/basket/add-item',fetchOptions)
+        fetch('https://weronique.onrender.com/basket/add-item',fetchOptions)
             .then(res=>res.json())
             .then(msg=>{msg.error?
                         document.body.insertAdjacentHTML('beforeend',infoModal(msg.error+' Please reload the page or login again')):
