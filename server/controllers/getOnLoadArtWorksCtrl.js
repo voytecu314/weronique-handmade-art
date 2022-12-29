@@ -3,7 +3,7 @@ const artWorkModel = require('../models/artWorkModel.js');
 const getOnLoadArtWorksCtrl = async (req, res) => {
 
     try {
-        const items = await artWorkModel.find({});
+        const items = await artWorkModel.find({"discount.set": true});
         const chosen_products = [];
 
          for (let i = 0; i < 2; i++) {
