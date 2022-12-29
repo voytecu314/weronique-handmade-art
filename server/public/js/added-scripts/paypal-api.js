@@ -31,8 +31,9 @@ paypal
                   JSON.stringify(orderData, null, 2)
                 );
                 
+                document.getElementById('basketLabel').innerText = '';
                 document.getElementById('paypal-button-container').innerHTML = '<h3>Thank you for your payment!</h3>';
-                
+
               }).catch(err=>console.log('On aprove error',err));
           },
         })
