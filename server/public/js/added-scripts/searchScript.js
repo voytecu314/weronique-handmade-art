@@ -13,7 +13,7 @@
                 .then(data=>{ searchDisplay.innerHTML="";
                     data.forEach(
                         (item)=>{searchDisplay.insertAdjacentHTML('beforeend',
-                            `<div style="height: 300px; margin-top: .5%;" class="ml-lg-auto col-lg-3 col-md-6 col-12 aos-init aos-amimate" data-aos="fade-up" data-aos-delay="800">
+                            `<div style="height: 300px; margin-top: .5%;" class="ml-lg-auto col-lg-3 col-md-6 col-12 aos-init aos-animate" data-aos="fade-up" data-aos-delay="800">
                                 <div class="team-thumb">
                                     <h5 style="text-align:center">${item.name}</h5>
                                     
