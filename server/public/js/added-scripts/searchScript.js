@@ -8,7 +8,7 @@
             document.getElementById('search-title').innerHTML = 
             `<h5 style="position: absolute; top: 0;">${keyword.toUpperCase()}</h5>`;
 
-            fetch(`http://localhost:5000/search-products/${keyword}`)
+            fetch(`https://weronique.onrender.com/search-products/${keyword}`)
                 .then(res=>res.json())
                 .then(data=>{ searchDisplay.innerHTML="";
                     data.forEach(
