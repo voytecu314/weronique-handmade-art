@@ -1,63 +1,119 @@
-<h1 style="text-align: center;">Hi Nisia!</h1>
-<div style="display: flex; flex-direction:column; gap:3px; align-items: center; justify-content: center;" >
-<input type="file" id="images-input" multiple="multiple" accept="image/jpeg, image/png, image/jpg" required/>
-<label for="result" >First picture is DEFAULT THUMBNAIL</label>
-<output id="result" style="display:flex; gap: 3px"></output>
-<strong>Choose Category:</strong>
-<select id="category-input" type="text" placeholder="CATEGORY" required>
-    <option value="TEDDIES">TEDDIES</option>    
-    <option value="DOLLS">DOLLS</option>
-    <option value="ART">ART</option>
-</select>
-<input id="name-input" type="text" placeholder="NAME" maxlength="13" required/>
-<input id="title-input" type="text" placeholder="TITLE" maxlength="24" required/>
-<textarea id="description-input" rows="4" cols="50" placeholder="DESCRIPTION" style="margin:10px"></textarea>
-<input id="technic-input" type="text" placeholder="description of techniques" maxlength="20"/>
-<div id="checkboxes" style="display: flex"> <span style="color: grey">Search KEYWORDS:</span> 
-    <input type="checkbox" id="keyword1" name="keyword1" value="teddy">
-    <label for="keyword1"> teddy</label>
-    <input type="checkbox" id="keyword2" name="keyword2" value="fluffy">
-    <label for="keyword2"> fluffy</label>
-    <input type="checkbox" id="keyword3" name="keyword3" value="gift">
-    <label for="keyword3"> gift</label>
-    <input type="checkbox" id="keyword4" name="keyword4" value="special">
-    <label for="keyword4"> special</label>
-    <input type="checkbox" id="keyword5" name="keyword5" value="dark">
-    <label for="keyword5"> dark</label>
-    <input type="checkbox" id="keyword6" name="keyword6" value="cotton">
-    <label for="keyword6"> cotton</label>
-    <input type="checkbox" id="keyword7" name="keyword7" value="doll">
-    <label for="keyword7"> doll</label>
-    <input type="checkbox" id="keyword8" name="keyword8" value="painting">
-    <label for="keyword8"> painting</label>
-    <input type="checkbox" id="keyword9" name="keyword9" value="image">
-    <label for="keyword9"> image</label>
-    <input type="checkbox" id="keyword10" name="keyword10" value="animal">
-    <label for="keyword10"> animal</label>
-    <input type="checkbox" id="keyword11" name="keyword11" value="sport">
-    <label for="keyword11"> sport</label>
-    <input type="checkbox" id="keyword12" name="keyword12" value="boy">
-    <label for="keyword12"> boy</label>
-    <input type="checkbox" id="keyword13" name="keyword13" value="girl">
-    <label for="keyword13"> girl</label>
-    <input type="checkbox" id="keyword14" name="keyword14" value="happy">
-    <label for="keyword14"> happy</label>
-    <input type="checkbox" id="keyword15" name="keyword15" value="little">
-    <label for="keyword15"> little</label>
-    <input type="checkbox" id="keyword16" name="keyword16" value="cheap">
-    <label for="keyword16"> cheap</label>
-</div>
-<input id="price-input" type="number" step="0.01" placeholder="PRICE in EURO"
+<div id="form_container">
+	
+    <h1><a>Weronique ART Dashboard</a></h1>
+    <form id="form_44390" class="appnitro">
+                <div class="form_description">
+        <h2>Weronique ART Dashboard</h2>
+        <p>Hi Nisia!</p>
+    </div>						
+        <ul >
+        
+                <li class="section_break">
+        <h3>First picture is DEFAULT THUMBNAIL</h3>
+        <p>Pierwsze wybrane zdjecie (w ramce) bedzie 'reprezentacyjne'.</p>
+    </li>		<li id="li_2" >
+    <label class="description" for="images-input">Upload a File </label>
+    <div>
+        <input id="images-input" name="images-input" class="element file" type="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg" required/> 
+        <output id="result" style="display:flex; gap: 3px"></output>
+    </div>  
+    </li>		<li class="section_break">
+        <h3>WYBIERZ KATEGORIE!!!</h3>
+        <p>Domyslnie ustawiona pierwsza kategoria, zmien jak potrzeba.</p>
+    </li>		<li id="li_11" >
+    <label class="description" for="category-input">CATEGORY </label>
+    <div>
+    <select class="element select medium" id="category-input" name="category-input" required> 
+        <option value="" selected="selected"></option>
+<option value="TEDDIES" >TEDDIES</option>
+<option value="DOLLS" >DOLLS</option>
+<option value="ART" >ART</option>
+
+    </select>
+    </div> 
+    </li>		<li id="li_5" >
+    <label class="description" for="name-input">Name </label>
+    <div>
+        <input id="name-input" name="name-input" class="element text medium" type="text" maxlength="13" required/> 
+    </div> 
+    </li>		<li id="li_6" >
+    <label class="description" for="title-input">Title </label>
+    <div>
+        <input id="title-input" name="title-input" class="element text medium" type="text" maxlength="24" required/> 
+    </div> 
+    </li>		<li id="li_7" >
+    <label class="description" for="description-input">Description </label>
+    <div>
+        <textarea id="description-input" name="description-input" class="element textarea medium"></textarea> 
+    </div><p class="guidelines" id="guide_7"><small>OPIS</small></p> 
+    </li>		<li id="li_8" >
+    <label class="description" for="technic-input">Production-technics short description </label>
+    <div>
+        <input id="technic-input" name="technic-input" class="element text medium" type="text" maxlength="20" /> 
+    </div> 
+    </li>		<li class="section_break">
+        <h3>Keywords</h3>
+        <p>Slowa kluczowe:</p>
+    </li>		<li id="li_12" >
+    <label class="description" for="element_12"> </label>
+    <div id="checkboxes">
+        <input id="element_12_1" name="element_12_1" class="element checkbox" type="checkbox" value="teddy" />
+<label class="choice" for="element_12_1">teddy</label>
+<input id="element_12_2" name="element_12_2" class="element checkbox" type="checkbox" value="doll" />
+<label class="choice" for="element_12_2">doll</label>
+<input id="element_12_3" name="element_12_3" class="element checkbox" type="checkbox" value="art" />
+<label class="choice" for="element_12_3">art</label>
+<input id="element_12_4" name="element_12_4" class="element checkbox" type="checkbox" value="fluffy" />
+<label class="choice" for="element_12_4">fluffy</label>
+<input id="element_12_5" name="element_12_5" class="element checkbox" type="checkbox" value="gift" />
+<label class="choice" for="element_12_5">gift</label>
+<input id="element_12_6" name="element_12_6" class="element checkbox" type="checkbox" value="boy" />
+<label class="choice" for="element_12_6">boy</label>
+<input id="element_12_7" name="element_12_7" class="element checkbox" type="checkbox" value="girl" />
+<label class="choice" for="element_12_7">girl</label>
+<input id="element_12_8" name="element_12_8" class="element checkbox" type="checkbox" value="special" />
+<label class="choice" for="element_12_8">special</label>
+<input id="element_12_9" name="element_12_9" class="element checkbox" type="checkbox" value="painting" />
+<label class="choice" for="element_12_9">painting</label>
+<input id="element_12_10" name="element_12_10" class="element checkbox" type="checkbox" value="haus" />
+<label class="choice" for="element_12_10">haus</label>
+<input id="element_12_11" name="element_12_11" class="element checkbox" type="checkbox" value="animal" />
+<label class="choice" for="element_12_11">animal</label>
+<input id="element_12_12" name="element_12_12" class="element checkbox" type="checkbox" value="creature" />
+<label class="choice" for="element_12_12">creature</label>
+<input id="element_12_13" name="element_12_13" class="element checkbox" type="checkbox" value="sport" />
+<label class="choice" for="element_12_13">sport</label>
+<input id="element_12_14" name="element_12_14" class="element checkbox" type="checkbox" value="cheap" />
+<label class="choice" for="element_12_14">cheap</label>
+<input id="element_12_15" name="element_12_15" class="element checkbox" type="checkbox" value="little" />
+<label class="choice" for="element_12_15">little</label>
+<input id="element_12_16" name="element_12_16" class="element checkbox" type="checkbox" value="cotton" />
+<label class="choice" for="element_12_16">cotton</label>
+
+    </div> 
+    </li>		<li id="li_9" >
+    
+        <input id="price-input" class="element text currency" size="10" type="number" step="0.01" placeholder="PRICE in EURO"
     oninput="(function(){
         document.getElementById('discount-price').innerText=(document.getElementById('price-input').value-
         (document.getElementById('price-input').value*(document.getElementById('discount-input').value/100)).toFixed(2))})()"
         required/>
-<input id="discount-input" type="number" step="0.1" min="1" max="100" placeholder="default discount %"
-oninput="(function(){
-    document.getElementById('discount-price').innerText=(document.getElementById('price-input').value-
-    (document.getElementById('price-input').value*(document.getElementById('discount-input').value/100))).toFixed(2)})()"
-    required/>
-<p>Change the price or discount to see the price after discount: <strong id="discount-price"></strong>€</p>
-<button type="submit">UPLOAD</button>
-
+     
+    </li>		<li id="li_10" >
+        <input id="discount-input" class="element text medium" type="number" step="0.1" min="1" max="100" placeholder="default discount %"
+        oninput="(function(){
+            document.getElementById('discount-price').innerText=(document.getElementById('price-input').value-
+            (document.getElementById('price-input').value*(document.getElementById('discount-input').value/100))).toFixed(2)})()"
+            required/>
+    </li>
+        
+                <li class="buttons">
+            <input type="hidden" name="form_id" value="44390" />
+            
+            <input id="saveForm" class="button_text" type="submit" name="submit" value="Upload" />
+    </li>
+    <p>Change the price or discount to see the price after discount: <strong id="discount-price"></strong>€</p>
+        </ul>
+    </form>	
+    
 </div>
